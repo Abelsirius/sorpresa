@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+}
+
+.contenedor{
+    position: relative;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.contenedor img{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: top;
+    filter: brightness(.5);
+}
+.contenido{
+    position: relative;
+}
+
+.btn_start{
+    cursor: pointer;
+    padding: 15px;
+    font-size: 25px;
+    border-radius: 8px;
+    color: rgb(245, 210, 210);
+    background-color: rgba(228, 33, 33, 0.123);
+    border: 1px solid rgb(199, 44, 44);
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+}
+
+.pauta{
+    position: absolute;
+    color: #fff; 
+    width: 100%;
+    text-align: center;
+    top: -15px;
+    opacity: 0;
+    z-index: -1;
+    transition: .3s ease;
+}
+
+.btn_start:hover{
+    box-shadow: 5px 5px 30px rgb(214, 61, 50), 1px 1px 20px rgb(214, 61, 50);
+    text-shadow: 5px 5px 50px rgb(248, 193, 191);
+    color: rgb(238, 78, 78);
+}
+
+.contenido:hover .pauta{
+    opacity: 1;
+    transform: translateY(-35px);
+}
+
+.vids_imgs{
+    position: absolute;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(17, 17, 17, 0.644);
+    filter: brightness(1.1);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.vids_imgs h3{
+
+    color: #fff;
+    text-align: center;
+}
+
+.card_vid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #1115;
+}
+
+video{
+    border-radius: 20px;
+    width: 80%;
+    padding: 5px 25px;
+    height: 500px;
+    filter: contrast(150%);
+}
+
+ .ri-play-line,.ri-pause-line{
+     position: relative;
+     font-size: 35px;
+    color: #fff;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
+.vids_imgs.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.ri-close-line{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 35px;
+    color: #fff;
+    cursor: pointer;
+}
+video.hidden{
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+video.active{
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    filter: contrast(150%);
+}
+
+.content_imgs{
+    width: 80vw;
+    height: 450px;
+}
+
+.imgBx{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: contrast(140%);
+}
+.content_imgs{
+    display: none;
+}
+.content_imgs.active{
+    display: flex;
+}
+.hidden_audio{
+    opacity: 0;
+}

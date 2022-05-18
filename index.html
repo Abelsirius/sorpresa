@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Gif</title>
+</head>
+<body>
+    <div class="vids_imgs" >
+        <i class="ri-close-line"></i>
+       <h3>Gracias Por Todo </br> Jennifer ♥</h3>
+       <div class="card_vid ">
+        <video  class="video_je vid1_repro" muted>
+            <source src="./vid2.mp4"/>
+        </video>
+        <video class="vid2_repro hidden" muted id="video_dos">
+            <source src="./vid3.mp4"  />
+        </video>
+        <audio class="music_fondo" volume=".5">
+            <source src="./lonely.mp3"/>
+        </audio>
+        <i class="ri-play-line "  id="raaa"></i>
+       </div>
+       <div class="content_imgs">
+           <img src="./img1.jpg" class="imgBx"/>
+       </div>
+   </div>
+<div class="contenedor">
+    <img src="./fondo.jpg"/>
+    <div class="contenido">
+         <p class="pauta">Haz click amor ♥</p>
+         <button class="btn_start">Jennifer ♥</button>
+    </div>          
+</div>
+
+ <script>
+      let btnCardVid = document.querySelector('.ri-play-line');
+      let vid2 = document.querySelector('.video_je');
+      let btnShowVid = document.querySelector('.btn_start');
+      let mysicBg = document.querySelector('.music_fondo');
+      let closeIcon = document.querySelector('.ri-close-line');
+      let source = document.querySelector('source');
+      let vid1Re = document.querySelector('.vid1_repro');
+      let vid2Re = document.getElementById('video_dos');
+
+      const playVid = () =>{
+          if(vid2.paused || vid2Re.paused ){
+              vid2.play()
+              vid2Re.play()
+              document.querySelector('.ri-play-line').classList.replace('ri-play-line','ri-pause-line')
+              mysicBg.play();
+              mysicBg.volume = '.4';
+              console.log(mysicBg.duration)
+              mysicBg.currentTime = 48;
+
+
+          }
+            else{
+              vid2Re.pause()
+              vid2.pause()
+              document.querySelector('.ri-pause-line').classList.replace('ri-pause-line','ri-play-line')
+              mysicBg.pause();
+        
+
+          }
+
+      }
+      btnCardVid.addEventListener('click',function(){playVid()})
+      btnShowVid.addEventListener('click',function(){
+        document.querySelector('.vids_imgs').classList.add('active');
+      })
+
+
+      vid2.addEventListener('ended',function(){
+        vid1Re.classList.add('hidden');
+        vid2Re.classList.remove('hidden');
+        vid2Re.play()
+        document.getElementById('raaa').classList.add('hidden_audio')
+
+      })
+      closeIcon.addEventListener('click',function(){
+        document.querySelector('.vids_imgs').classList.remove('active');
+        mysicBg.pause();
+        if(vid2Re.play || vid2.play){
+            vid2Re.pause();
+            vid2.pause();
+        }
+        document.querySelector('.ri-pause-line').classList.replace('ri-pause-line','ri-play-line')
+
+      })
+
+      vid2Re.addEventListener('ended',function(){
+        if(vid1Re.ended){
+            vid2Re.classList.add('hidden');
+            document.querySelector('.content_imgs').classList.add('active');
+            document.getElementById('.raaa').classList.add('hidden_audio')
+
+        }
+      })
+
+     
+      let arr = ['./img1.jpg','./img2.jpg','./img3.jpg','./img4.jpg','./img5.jpg'];
+
+      let contador =  0;
+    setInterval(function(){
+        document.querySelector('.imgBx').src = arr[contador];
+       if(contador == 4){
+           contador = 1
+       }else{
+           contador++;
+       }
+      },1000)
+
+ </script>
+
+
+</body>
+</html>
