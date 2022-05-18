@@ -134,8 +134,11 @@ video.active{
 }
 
 .content_imgs{
-    width: 80vw;
+    width: 450;
+    border-radius: 15px;
+    overflow: hidden;
     height: 450px;
+    box-shadow: 1px 1px 50px rgba(247, 187, 187, 0.767) , 1px 1px 50px rgba(231, 125, 125, 0.767);
 }
 
 .imgBx{
