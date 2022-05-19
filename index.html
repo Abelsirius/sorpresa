@@ -45,22 +45,22 @@
       let vid1Re = document.querySelector('.vid1_repro');
       let vid2Re = document.getElementById('video_dos');
 
+      mysicBg.currentTime = 40;
       const playVid = () =>{
           if(vid2.paused || vid2Re.paused ){
               vid2.play()
               vid2Re.play()
-              document.querySelector('.ri-play-line').classList.replace('ri-play-line','ri-pause-line')
+              document.getElementById('raaa').classList.replace('ri-play-line','ri-pause-line')
               mysicBg.play();
               mysicBg.volume = '.4';
               console.log(mysicBg.duration)
-              mysicBg.currentTime = 48;
 
 
           }
             else{
               vid2Re.pause()
               vid2.pause()
-              document.querySelector('.ri-pause-line').classList.replace('ri-pause-line','ri-play-line')
+              document.getElementById('raaa').classList.replace('ri-pause-line','ri-play-line')
               mysicBg.pause();
         
 
@@ -77,7 +77,6 @@
         vid1Re.classList.add('hidden');
         vid2Re.classList.remove('hidden');
         vid2Re.play()
-        document.getElementById('raaa').classList.add('hidden_audio')
 
       })
       closeIcon.addEventListener('click',function(){
@@ -95,7 +94,6 @@
         if(vid1Re.ended){
             vid2Re.classList.add('hidden');
             document.querySelector('.content_imgs').classList.add('active');
-            document.getElementById('.raaa').classList.add('hidden_audio')
 
         }
       })
