@@ -135,10 +135,9 @@ video.active{
 
 .content_imgs{
     width: 450;
-    border-radius: 15px;
-    overflow: hidden;
     height: 450px;
     box-shadow: 1px 1px 50px rgba(247, 187, 187, 0.767) , 1px 1px 50px rgba(231, 125, 125, 0.767);
+    background-color: transparent;
 }
 
 .imgBx{
@@ -152,11 +151,20 @@ video.active{
     display: none;
 }
 .content_imgs.active{
-    display: flex;
+    display: block;
 }
 .hidden_audio{
     opacity: 0;
 }
+
+.swiper-slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
 
 
 
@@ -179,4 +187,23 @@ video.active{
     }
     
 
+}
+
+.animation{
+    white-space: nowrap;
+    border-right: 4px solid #fff;
+    width: 25ch;
+    animation: typing 2.5s steps(25) infinite alternate, blink .5s infinite step-end alternate;
+    overflow: hidden;
+
+}
+
+
+@keyframes typing {
+    from { width: 0}
+}
+
+
+@keyframes blink {
+    50% { border-color: transparent;}
 }

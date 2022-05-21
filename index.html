@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./swiper-bundle.min.css">
     <title>Gif</title>
 </head>
 <body>
     <div class="vids_imgs" >
         <i class="ri-close-line"></i>
-       <h3>Gracias Por Todo </br> Jennifer ♥</h3>
+       <h3>Gracias Por Todo  Jennifer ♥</h3>
        <div class="card_vid ">
         <video  class="video_je vid1_repro" muted>
             <source src="./vid2.mp4"/>
@@ -24,7 +25,18 @@
         <i class="ri-play-line "  id="raaa"></i>
        </div>
        <div class="content_imgs">
-           <img src="./img1.jpg" class="imgBx"/>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" ><img src="./img1.jpg" alt=""></div>
+              <div class="swiper-slide" ><img src="./img2.jpg" alt=""></div>
+              <div class="swiper-slide" ><img src="./img3.jpg" alt=""></div>
+              <div class="swiper-slide" ><img src="./img4.jpg" alt=""></div>
+              <div class="swiper-slide" ><img src="./img5.jpg" alt=""></div>
+
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
        </div>
    </div>
 <div class="contenedor">
@@ -34,7 +46,7 @@
          <button class="btn_start">Jennifer ♥</button>
     </div>          
 </div>
-
+ <script src="./swiper-bundle.min.js"></script>
  <script>
       let btnCardVid = document.querySelector('.ri-play-line');
       let vid2 = document.querySelector('.video_je');
@@ -45,7 +57,11 @@
       let vid1Re = document.querySelector('.vid1_repro');
       let vid2Re = document.getElementById('video_dos');
 
-      mysicBg.currentTime = 40;
+
+      
+      let words = ['Te Amo Jennifer','Te Extraño Jennifer','Porque eres mi Paraiso','Mi Lugar Favorito','Tus Ojos Son Arte','Asi que toma mi mano','Y Vamonos a Marte','Y Abrazame con todas tus fuerzas','Dueña de mis ojos ciegos','de mis labios','de mis sentimientos','Dueña de este chico raro ', 'Te amo mas que a mi vida','Gracias por hacerme sentir querido','Mi Cosita PRECIOSA'];
+      let contadorWords =  0;
+      let wordsInterval;  
       const playVid = () =>{
           if(vid2.paused || vid2Re.paused ){
               vid2.play()
@@ -54,15 +70,26 @@
               mysicBg.play();
               mysicBg.volume = '.4';
               console.log(mysicBg.duration)
+              document.querySelector('h3').classList.add('animation')
+              wordsInterval = setInterval(function(){
+        document.querySelector('.animation').textContent = words[contadorWords];
+       if(contadorWords == 11){
+           contadorWords = 1;
+       }else{
+           contadorWords++;
+       }
+      },5000)
+
 
 
           }
             else{
+              document.querySelector('h3').classList.remove('animation')
               vid2Re.pause()
               vid2.pause()
               document.getElementById('raaa').classList.replace('ri-pause-line','ri-play-line')
               mysicBg.pause();
-        
+              clearInterval(wordsInterval)
 
           }
 
@@ -70,6 +97,8 @@
       btnCardVid.addEventListener('click',function(){playVid()})
       btnShowVid.addEventListener('click',function(){
         document.querySelector('.vids_imgs').classList.add('active');
+        mysicBg.currentTime = 48;
+
       })
 
 
@@ -80,13 +109,14 @@
 
       })
       closeIcon.addEventListener('click',function(){
+        clearInterval(wordsInterval)
         document.querySelector('.vids_imgs').classList.remove('active');
         mysicBg.pause();
         if(vid2Re.play || vid2.play){
             vid2Re.pause();
             vid2.pause();
         }
-        document.querySelector('.ri-pause-line').classList.replace('ri-pause-line','ri-play-line')
+        document.getElementById('raaa').classList.replace('ri-pause-line','ri-play-line')
 
       })
 
@@ -99,18 +129,36 @@
       })
 
      
-      let arr = ['./img1.jpg','./img2.jpg','./img3.jpg','./img4.jpg','./img5.jpg'];
+    //   let arr = ['./img1.jpg','./img2.jpg','./img3.jpg','./img4.jpg','./img5.jpg'];
 
-      let contador =  0;
-    setInterval(function(){
-        document.querySelector('.imgBx').src = arr[contador];
-       if(contador == 4){
-           contador = 1
-       }else{
-           contador++;
-       }
-      },1000)
-
+    //   let contador =  0;
+    // setInterval(function(){
+    //     document.querySelector('.imgBx').src = arr[contador];
+    //    if(contador == 4){
+    //        contador = 1
+    //    }else{
+    //        contador++;
+    //    }
+    //   },1000)
+    
+      /* -------------------- Swiper ------------ */
+      var swiper = new Swiper('.swiper', {
+      effect: 'cube',
+      grabCursor: true,
+      loop:true,
+      cubeEffect: {
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 20,
+        shadowScale: 0.94,
+      },
+      autoplay :{
+          delay:1500,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
  </script>
 
 
