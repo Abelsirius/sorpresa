@@ -109,6 +109,9 @@
 
       })
       closeIcon.addEventListener('click',function(){
+        vid2.classList.remove('hidden')
+        vid2Re.classList.add('hidden')
+        document.querySelector('.content_imgs').classList.remove('active');
         clearInterval(wordsInterval)
         document.querySelector('.vids_imgs').classList.remove('active');
         mysicBg.pause();
